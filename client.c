@@ -14,7 +14,6 @@ const char *EXIT = "exit";
 
 
 void lireMessage(char tampon[]) {
-    printf("Saisir un message à envoyer :\n");
     fgets(tampon, MAX_BUFFER, stdin);
     strtok(tampon, "\n");
 }
@@ -53,7 +52,15 @@ int main(int argc , char const *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    printf("connexion ok\n");
+    printf("\e[1;91m"); //Set the text to the color blue
+    printf("        🔥 ✔ RÉSA 3000 ✔ 🔥          \n"); //Display Hello in blue
+    printf("\e[0;93m"); //Resets the text to default color
+    printf("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n");  
+    printf("▌ 🎫 1.     Réserver un billet      🎫   ▐\n");   
+    printf("▌ 👀 2. Voir les places disponibles 👀   ▐\n");  
+    printf("▌ ❌ 3.     Supprimer son billet    ❌   ▐\n");  
+    printf("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n");
+    printf("\033[0m");
 
     while (1) {
         lireMessage(tampon);
@@ -71,8 +78,8 @@ int main(int argc , char const *argv[]) {
 
         if (nbRecu > 0) {
             tampon[nbRecu] = 0;
-            printf("Recu : %s\n", tampon);
-
+            printf("\n%s\n", tampon);
+            sprintf(tampon, "\n");
             if (testQuitter(tampon)) {
                 break; // on quitte la boucle
             }
